@@ -10,9 +10,8 @@ namespace ClassLibrary
     {
 
         public int Id { get; set; }
-        public string? FirstName { get; set; }
-        public string? Email { get; set; }
         public string? SerialNumber { get; set; }
+        public int Count { get; set; }
 
 
     }
