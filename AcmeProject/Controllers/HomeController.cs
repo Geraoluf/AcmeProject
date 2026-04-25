@@ -8,6 +8,9 @@ namespace AcmeProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        
+
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -17,6 +20,27 @@ namespace AcmeProject.Controllers
         {
             return View();
         }
+
+
+
+        public IActionResult AddSubmissionForm(SubmissionViewModel submissionViewModel)
+        {
+            var add = new SubmissionViewModel
+            {
+                Navn = submissionViewModel.Navn,
+                LastName = submissionViewModel.LastName,
+                Email = submissionViewModel.Email,
+                SerialNumber = submissionViewModel.SerialNumber,
+            };
+
+            
+
+            return View();
+        }
+
+
+
+
 
         public IActionResult Privacy()
         {

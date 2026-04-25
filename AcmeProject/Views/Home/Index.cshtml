@@ -1,8 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model AcmeProject.Models.SubmissionViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<br />
+<br />
+<br />
+
+<h1>Submission Form </h1>
+<form method="post" asp-action="AddSubmissionForm" class="mt-5">
+
+    <div class="mb-3">
+        <label for="" class="form-label">Navn</label>
+        <input type="text" class="form-control" asp-for="Navn" />
+    </div>
+
+
+    <div class="mb-3">
+        <label for="" class="form-label">LarstName</label>
+        <input type="date" class="form-control" asp-for="LastName" />
+    </div>
+
+
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="Email" />
+    </div>
+
+    
+
+
+    <div class="mb-3">
+        <label for="" class="form-label">SerialNumber</label>
+        <input type="text" class="form-control" asp-for="SerialNumber" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Tilføj</button>
+
+</form>
