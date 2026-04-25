@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using AcmeProject.Models;
+using ClassLibrary;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AcmeProject.Controllers
@@ -8,12 +9,14 @@ namespace AcmeProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        
+        private readonly AppDbContext _appDbContext;
 
+       
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext)
         {
             _logger = logger;
+            _appDbContext = appDbContext;
         }
 
         public IActionResult Index()
@@ -25,17 +28,20 @@ namespace AcmeProject.Controllers
 
         public IActionResult AddSubmissionForm(SubmissionViewModel submissionViewModel)
         {
-            var add = new SubmissionViewModel
+            var submission = new SubmissionModel
             {
-                Navn = submissionViewModel.Navn,
+                FirstName = submissionViewModel.Navn,
                 LastName = submissionViewModel.LastName,
                 Email = submissionViewModel.Email,
-                SerialNumber = submissionViewModel.SerialNumber,
+                SerialNumber = submissionViewModel.SerialNumber.ToString(),  //convertere til string
             };
 
-            
+            _appDbContext.SubmissionModels.Add(submission);
+            _appDbContext.SaveChanges();
 
-            return View();
+
+
+            return RedirectToAction("Index");
         }
 
 

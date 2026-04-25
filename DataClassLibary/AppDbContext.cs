@@ -15,7 +15,7 @@ namespace ClassLibrary
 
 
         public DbSet<SerialNumberModel> SerialNumbers { get; set; }
-        public DbSet<SubmissionModel> DrawEntryModels  { get; set; }
+        public DbSet<SubmissionModel> SubmissionModels  { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
