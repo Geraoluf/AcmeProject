@@ -15,7 +15,7 @@ namespace AcmeProject.Controllers
         public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext)
         {
             _logger = logger;
-            _appDbContext = appDbContext; 
+            _appDbContext = appDbContext;
         }
 
         public IActionResult Index()
