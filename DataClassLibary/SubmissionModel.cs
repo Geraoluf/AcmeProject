@@ -14,7 +14,7 @@ namespace ClassLibrary
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? SerialNumber { get; set; }
-        public int DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
 
 
     }

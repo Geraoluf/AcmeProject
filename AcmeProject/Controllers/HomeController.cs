@@ -30,10 +30,13 @@ namespace AcmeProject.Controllers
         {
             var submission = new SubmissionModel
             {
-                FirstName = submissionViewModel.Navn,
+                FirstName = submissionViewModel.FirstName,
                 LastName = submissionViewModel.LastName,
                 Email = submissionViewModel.Email,
-                SerialNumber = submissionViewModel.SerialNumber.ToString(),  //convertere til string
+                DateOfBirth = submissionViewModel.DateOfBirth,
+                SerialNumber = submissionViewModel.SerialNumber,
+               
+            
             };
 
             _appDbContext.SubmissionModels.Add(submission);
