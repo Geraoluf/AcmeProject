@@ -23,6 +23,11 @@ namespace AcmeProject.Controllers
             return View();
         }
 
+        public IActionResult test()
+        {
+            return View();
+        }
+
 
 
         public IActionResult AddSubmissionForm(SubmissionViewModel submissionViewModel)
