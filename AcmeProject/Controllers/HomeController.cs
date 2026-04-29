@@ -37,7 +37,7 @@ namespace AcmeProject.Controllers
                 FirstName = submissionViewModel.FirstName,
                 LastName = submissionViewModel.LastName,
                 Email = submissionViewModel.Email,
-                DateOfBirth = submissionViewModel.DateOfBirth,
+                Age = submissionViewModel.Age,
                 SerialNumber = submissionViewModel.SerialNumber,
                
             

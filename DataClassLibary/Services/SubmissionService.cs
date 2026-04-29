@@ -18,26 +18,7 @@ namespace DataClassLibary.Services
 
 
 
-        public bool AgeOver18(DateOnly dateOfBirth) //alders tjek
-        {
-
-           
-               
-        }
-
-
-        public bool SerialNumberExist(string serialNumber) //serial nummer tjek
-        {
-           
-        }
-
-
-
-        public bool CanUseSerial(string serialNumber) // < 2 serial nummer tjek
-        {
-            
-        }
-
+        
 
 
 
@@ -49,11 +30,6 @@ namespace DataClassLibary.Services
         //----------------------
 
 
-        public string Submit(SubmissionModel submissionModel)  //samlet flow
-        {
-
-            
-        }
 
 
 
