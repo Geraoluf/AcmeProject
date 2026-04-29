@@ -7,6 +7,8 @@
 <h1>Submission Form </h1>
 <form method="post" asp-action="AddSubmissionForm" class="mt-5">
 
+    <div asp-validation-summary="All" class="text-danger"></div>
+
     <div class="mb-3">
         <label for="" class="form-label">FirstName</label>
         <input type="text" class="form-control" asp-for="FirstName" />

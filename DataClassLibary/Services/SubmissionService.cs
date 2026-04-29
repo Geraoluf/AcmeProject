@@ -20,11 +20,9 @@ namespace DataClassLibary.Services
 
 
 
-       
 
 
-
-        public bool SerialNumberExist(string serialNumber) //serial nummer tjek
+        public bool SerialNumberExist(string serialNumber) //serial nummer tjek om det er i databasen
         {
             if (string.IsNullOrWhiteSpace(serialNumber))
             {

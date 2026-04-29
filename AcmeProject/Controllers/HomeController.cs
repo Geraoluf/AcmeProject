@@ -54,7 +54,7 @@ namespace AcmeProject.Controllers
             }
 
             ModelState.AddModelError("", result);
-            return View("privacy");
+            return View("Index", model);
         }
 
 
