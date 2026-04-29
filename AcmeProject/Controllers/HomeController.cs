@@ -1,7 +1,8 @@
-using System.Diagnostics;
 using AcmeProject.Models;
 using ClassLibrary;
+using DataClassLibary.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace AcmeProject.Controllers
 {
@@ -11,50 +12,52 @@ namespace AcmeProject.Controllers
 
         private readonly AppDbContext _appDbContext;
 
+        private readonly SubmissionService _submissionService;
 
-        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext)
+
+        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext, SubmissionService submissionService)
         {
             _logger = logger;
             _appDbContext = appDbContext;
+            _submissionService = submissionService;
         }
+
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult test()
+
+        [HttpPost]
+        public IActionResult AddSubmissionForm(SubmissionViewModel model)
         {
-            return View();
-        }
+            if (model.Age < 18)
+            {
+                return View("Error");
+            }
 
-
-
-        public IActionResult AddSubmissionForm(SubmissionViewModel submissionViewModel)
-        {
             var submission = new SubmissionModel
             {
-                FirstName = submissionViewModel.FirstName,
-                LastName = submissionViewModel.LastName,
-                Email = submissionViewModel.Email,
-                Age = submissionViewModel.Age,
-                SerialNumber = submissionViewModel.SerialNumber,
-               
-            
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                Age = model.Age,
+                SerialNumber = model.SerialNumber,
             };
 
-            _appDbContext.SubmissionModels.Add(submission);
-            _appDbContext.SaveChanges();
+            var result = _submissionService.Submit(submission);
 
+            if (result == "ok")
+            {
+                return RedirectToAction("Index");
+            }
 
-
-            return RedirectToAction("Index");
+            ModelState.AddModelError("", result);
+            return View("privacy");
         }
 
-        public bool Empty()
-        {
-            throw new NotImplementedException();
-        }
+
 
 
 
