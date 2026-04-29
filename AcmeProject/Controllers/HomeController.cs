@@ -51,7 +51,10 @@ namespace AcmeProject.Controllers
             return RedirectToAction("Index");
         }
 
-
+        public bool Empty()
+        {
+            throw new NotImplementedException();
+        }
 
 
 
