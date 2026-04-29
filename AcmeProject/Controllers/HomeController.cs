@@ -58,7 +58,10 @@ namespace AcmeProject.Controllers
         }
 
 
-
+        public IActionResult test()
+        {
+            return View();
+        }
 
 
         public IActionResult Privacy()
