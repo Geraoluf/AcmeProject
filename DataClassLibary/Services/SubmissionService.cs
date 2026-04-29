@@ -24,34 +24,49 @@ namespace DataClassLibary.Services
 
         public bool SerialNumberExist(string serialNumber) //serial nummer tjek om det er i databasen
         {
-            if (string.IsNullOrWhiteSpace(serialNumber))
+            if (serialNumber == null)
             {
                 return false;
             }
 
-            return _appDbContext.SerialNumbers
-                .Any(s => s.SerialNumber == serialNumber);
+           foreach (var item in _appDbContext.SerialNumbers)
+           {
+
+                if (item.SerialNumber == serialNumber)
+                {
+                    return true;
+                }
+           }
+
+           return false;
         }
 
 
 
         public bool SerialCount(string serialNumber) // < 2 serial nummer tjek
         {
-            var count = _appDbContext.SubmissionModels
-                .Count(s => s.SerialNumber == serialNumber);
+            int count = 0;
 
-            return count < 2;
+            foreach (var item in _appDbContext.SubmissionModels)
+            {
+                if (item.SerialNumber == serialNumber)
+                {
+                    count++;
+                }
+            }
+
+            if (count < 2)
+            {
+
+                return true;
+            }
+
+            return false;
+            
+
         }
 
 
-
-
-
-
-
-
-
-       
 
 
         public string Submit(SubmissionModel submissionModel)
