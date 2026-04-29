@@ -70,22 +70,20 @@ using (var scope = app.Services.CreateScope())
 }
 
 // seed data
-using (var scope = app.Services.CreateScope())
+static async Task SeedAsync(WebApplication app)
 {
-    var services = scope.ServiceProvider;
+    using var scope = app.Services.CreateScope();
 
-    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
-    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
     string roleName = "Admin";
 
-    // Opret rolle
     if (!await roleManager.RoleExistsAsync(roleName))
     {
         await roleManager.CreateAsync(new IdentityRole(roleName));
     }
 
-   
     string adminEmail = "admin@site.dk";
     string adminPassword = "Admin123!";
 
@@ -104,6 +102,7 @@ using (var scope = app.Services.CreateScope())
         await userManager.AddToRoleAsync(user, roleName);
     }
 }
+
 
 
 
