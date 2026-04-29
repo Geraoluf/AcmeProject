@@ -104,6 +104,4 @@ static async Task SeedAsync(WebApplication app)
 }
 
 
-
-
 app.Run();
