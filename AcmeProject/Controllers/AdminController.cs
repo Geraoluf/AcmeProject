@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace AcmeProject.Controllers
 {
     [Authorize(Roles = "Admin")]
@@ -24,6 +25,22 @@ namespace AcmeProject.Controllers
         {
             var submissions = _appDbContext.SubmissionModels.ToList();
             return View(submissions);
+        }
+
+
+
+        public IActionResult GetPdf()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "SerialNumbers", "serialnumbers.pdf");
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+
+            return File(fileBytes, "application/pdf", "SerialNumbers.pdf");
         }
     }
 }
