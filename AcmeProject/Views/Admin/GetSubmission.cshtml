@@ -42,6 +42,20 @@
 </table>
 
 
+
+
+@for (int i = 1; i <= ViewBag.TotalPages; i++)
+{
+    <a asp-action="GetSubmission" asp-route-page="@i">@i</a>
+}
+
+<a asp-action="GetSubmission" asp-route-page="@(ViewBag.CurrentPage - 1)">Previous</a>
+<a asp-action="GetSubmission" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+
+<br />
+<br />
+<br />
+<br />
 <form asp-area="Identity" asp-page="/Account/Logout" method="post">
     <button type="submit" class="btn btn-link">Log ud</button>
 </form>

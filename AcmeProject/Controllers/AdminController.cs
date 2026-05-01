@@ -21,10 +21,21 @@ namespace AcmeProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetSubmission()
+        public IActionResult GetSubmission(int page = 1)
         {
-            var submissions = _appDbContext.SubmissionModels.ToList();
-            return View(submissions);
+            int pageSize = 10;
+
+            var totalItems = _appDbContext.SubmissionModels.Count();
+
+            var data = _appDbContext.SubmissionModels
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            return View(data);
         }
 
 
