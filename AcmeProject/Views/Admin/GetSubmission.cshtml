@@ -6,9 +6,12 @@
 <br />
 
 <a asp-controller="Admin" asp-action="GetPdf" class="btn btn-primary">
-    Download PDF
+    Download Serialnumbers
+    <br />
+    PDF 
 </a>
 
+<br />
 <br />
 <br />
 
@@ -20,6 +23,7 @@
             <th>Last Name</th>
             <th>E-Mail</th>
             <th>Serial Number</th>
+            <th>Age</th>
 
         </tr>
     </thead>
@@ -49,8 +53,17 @@
     <a asp-action="GetSubmission" asp-route-page="@i">@i</a>
 }
 
-<a asp-action="GetSubmission" asp-route-page="@(ViewBag.CurrentPage - 1)">Previous</a>
-<a asp-action="GetSubmission" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+@if (ViewBag.CurrentPage > 1)
+{
+    <a asp-action="GetSubmission" asp-route-page="@(ViewBag.CurrentPage - 1)">Previous</a>
+}
+
+@if (ViewBag.CurrentPage < ViewBag.TotalPages)
+{
+    <a asp-action="GetSubmission" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+}
+
+
 
 <br />
 <br />
