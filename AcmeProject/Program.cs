@@ -102,6 +102,6 @@ static async Task SeedAsync(WebApplication app)
         await userManager.AddToRoleAsync(user, roleName);
     }
 }
-
+await SeedAsync(app);
 
 app.Run();
