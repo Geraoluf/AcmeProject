@@ -35,7 +35,7 @@ namespace AcmeProject.Controllers
             if (model.Age < 18)
             {
                 ModelState.AddModelError("Age", "Du skal være mindst 18 år");
-                return View("Index", model);
+                return View("Index", model); 
             }
 
             var submission = new SubmissionModel
