@@ -34,7 +34,8 @@ namespace AcmeProject.Controllers
         {
             if (model.Age < 18)
             {
-                return View("Error");
+                ModelState.AddModelError("Age", "Du skal være mindst 18 år");
+                return View("Index", model);
             }
 
             var submission = new SubmissionModel
@@ -68,6 +69,10 @@ namespace AcmeProject.Controllers
         {
             return View();
         }
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
