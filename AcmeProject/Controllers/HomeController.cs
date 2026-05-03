@@ -40,11 +40,11 @@ namespace AcmeProject.Controllers
 
             if (model.Age < 18)
             {
-                ModelState.AddModelError("Age", "Du skal være mindst 18 år");
+                ModelState.AddModelError("Age", "You must be at least 18 years old");
                 return View("Index", model); 
             }
 
-            if (string.IsNullOrEmpty(model.SerialNumber)) { ModelState.AddModelError("SerialNumber", "upps du glemte at skrive et serial nummer"); return View("Index", model); }
+            if (string.IsNullOrEmpty(model.SerialNumber)) { ModelState.AddModelError("SerialNumber", "Oops, you forgot to enter a serial number"); return View("Index", model); }
             
 
             var submission = new SubmissionModel
