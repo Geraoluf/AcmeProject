@@ -2,11 +2,13 @@ using AcmeProject.Models;
 using ClassLibrary;
 using DataClassLibary.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
 
 namespace AcmeProject.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller  //Controller for Submission form
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -32,11 +34,18 @@ namespace AcmeProject.Controllers
         [HttpPost]
         public IActionResult AddSubmissionForm(SubmissionViewModel model)
         {
+
+            if (!ModelState.IsValid) return View("Index", model);
+
+
             if (model.Age < 18)
             {
                 ModelState.AddModelError("Age", "Du skal være mindst 18 år");
                 return View("Index", model); 
             }
+
+            if (string.IsNullOrEmpty(model.SerialNumber)) { ModelState.AddModelError("SerialNumber", "upps du glemte at skrive et serial nummer"); return View("Index", model); }
+            
 
             var submission = new SubmissionModel
             {

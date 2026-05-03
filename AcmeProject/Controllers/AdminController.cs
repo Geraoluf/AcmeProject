@@ -23,7 +23,7 @@ namespace AcmeProject.Controllers
         [HttpGet]
         public IActionResult GetSubmission(int page = 1)
         {
-            int pageSize = 2;
+            int pageSize = 10;
 
             var totalItems = _appDbContext.SubmissionModels.Count();
 
