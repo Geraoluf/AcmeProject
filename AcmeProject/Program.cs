@@ -58,8 +58,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
-using (var scope = app.Services.CreateScope())
-{
+using (var scope = app.Services.CreateScope())  //automatic migratiu and update db
+{ 
     var services = scope.ServiceProvider;
 
     var identityDb = services.GetRequiredService<IdentityContext>();
@@ -70,7 +70,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 // seed data
-static async Task SeedAsync(WebApplication app)
+static async Task SeedAsync(WebApplication app)   //seed data to Identity db
 {
     using var scope = app.Services.CreateScope();
 
@@ -79,7 +79,7 @@ static async Task SeedAsync(WebApplication app)
 
     string roleName = "Admin";
 
-    if (!await roleManager.RoleExistsAsync(roleName))
+    if (!await roleManager.RoleExistsAsync(roleName)) //role only one time
     {
         await roleManager.CreateAsync(new IdentityRole(roleName));
     }
