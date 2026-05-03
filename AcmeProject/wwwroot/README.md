@@ -14,5 +14,5 @@ Email = admin@site.dk
 Password = Admin123!
 
 5. download PDF file with SerialNumbers - can be downloaded from the admin page.
-6. fill out the submission form and "GEM"
+6. fill out the submission form and "save"
 
