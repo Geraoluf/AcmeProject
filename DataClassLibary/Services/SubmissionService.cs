@@ -55,6 +55,9 @@ namespace DataClassLibary.Services
                 }
             }
 
+            //        return _appDbContext.SubmissionModels
+            //       .Count(x => x.SerialNumber == serialNumber) < 2;
+
             if (count < 2)
             {
 
